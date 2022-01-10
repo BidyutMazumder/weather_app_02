@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Loading extends StatefulWidget {
+  const Loading({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _LoadingState createState() => _LoadingState();
 }
 
-class _HomeState extends State<Home> {
+class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Loading Activity"),
+      body: SafeArea(
+        child: Text("Loading Activity"),
+      ),
     );
   }
 }
