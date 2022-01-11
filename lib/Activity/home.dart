@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_02/Model/weather_model.dart';
+import 'package:weather_app_02/Service/weather_api_client.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,37 +11,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  int a = 0;
-
-  void alarm()
-  {
-    Future.delayed(Duration(seconds: 5),(){
-      print("Do it 2");
-    });
-    print("do it");
-  }
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    alarm();
-    print("This is inite state");
+  WeatherApiClient client = WeatherApiClient();
+  Weather_Api data = Weather_Api();
+
+  Future<void>getData()async{
+    data = await client.getData("Dhaka");
   }
 
-  @override
-  void increment(){
-    setState(() {
-      a++;
-      print("setstate");
-    });
-  }
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    print("widget distroy");
-  }
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -48,11 +27,7 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: Column(
           children: [
-            Text("Home Activity"),
-            FloatingActionButton(onPressed: (){
-              increment();
-            }),
-            Text("$a"),
+
           ],
         ),
 
