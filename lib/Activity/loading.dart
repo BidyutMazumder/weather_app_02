@@ -12,7 +12,17 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Text("Loading Activity"),
+        child: Column(
+          children: [
+            TextButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, "/home");
+              },
+              icon: Icon(Icons.add_to_home_screen),
+              label: Text("Go to Home"),
+            ),
+          ],
+        ),
       ),
     );
   }
